@@ -15,6 +15,12 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/sate
 	accessToken: API_KEY
 });
 
+// We create the tile layer that will be the background of our map.
+let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+	maxZoom: 18,
+	accessToken: API_KEY
+});
 // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
 	center: [40.7, -94.5],
@@ -25,18 +31,19 @@ let map = L.map('mapid', {
 // Create a base layer that holds all three maps.
 let baseMaps = {
   "Streets": streets,
-  "Satellite": satelliteStreets
+  "Satellite": satelliteStreets,
+  "Dark":dark
 };
 
 // 1. Add a 2nd layer group for the tectonic plate data.
 let allEarthquakes = new L.LayerGroup();
-let tectonicplates = new L.LayerGroup();
-let majorearthquakes = new L.LayerGroup();
+let tectonicPlates = new L.LayerGroup();
+let majorEQ = new L.LayerGroup();
 
 
 // 2. Add a reference to the tectonic plates group to the overlays object.
 let overlays = {
-  "Earthquakes": allEarthquakes, "Tectonic Plates":tectonicplates, "Major Earthquakes":majorearthquakes
+  "Earthquakes": allEarthquakes, "Tectonic Plates":tectonicPlates, "Major Earthquakes":majorEQ
 };
 
 // Then we add a control to the map that will allow the user to change which
@@ -164,9 +171,9 @@ function getRadius(magnitude) {
 
   
   // 8. Add the major earthquakes layer to the map.
-}).addTo(majorearthquakes);
+}).addTo(majorEQ);
   // 9. Close the braces and parentheses for the major earthquake data.
-  majorearthquakes.addTo(map);
+  majorEQ.addTo(map);
   });
 
   // Here we create a legend control object.
@@ -207,8 +214,8 @@ legend.onAdd = function() {
     console.log(data);
     L.geoJson(data,{
       color:"#FF4A08", weight:1
-    }).addTo(tectonicplates); // Add to the overlay
-    tectonicplates.addTo(map);
+    }).addTo(tectonicPlates); // Add to the overlay
+    tectonicPlates.addTo(map);
   });
 });
 
