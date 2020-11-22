@@ -4,12 +4,12 @@ The objective of this project is to use [Leaflet javascript api library]("https:
 Link to this library in the `head` section of `index.html`<br>
 `<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" ... />`<br> 
 The earhquake data is formatted as geoJSON and comes from the following source:<br>
-[current week earthquake data](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)
-[current week major earthquake data with magnitude > 4.5 ](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson)
+[current week earthquake data](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)<br>
+[current week major earthquake data with magnitude > 4.5 ](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson)<br>
 <br>Use the following Mapbox Static Tiles API from mapplot to renders the base maps:<br>
-[Street map](https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)
-[Satellite map](https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)
-[Dark map](https://api.mapbox.com/styles/v1/mapbox/dark-v10.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)
+[Street map](https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)<br>
+[Satellite map](https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)<br>
+[Dark map](https://api.mapbox.com/styles/v1/mapbox/dark-v10.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)<br>
 
 Use the Leaflet tileLayer API to set up our base maps<br>
 * `let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', { ... });`
