@@ -4,24 +4,19 @@ The objective of this project is to use [Leaflet javascript api library]("https:
 We link to this library in the `head` section of `index.html`<br>
 `<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" ... />`<br> 
 The earhquake data is formatted as geoJSON and comes from the following source:<br>
-[current week earthquake data]("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson")<br>
-[current week major earthquake data with magnitude > 4.5 ]("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson")<br>
+[current week earthquake data](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)<br>
+[current week major earthquake data with magnitude > 4.5 ](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson)<br>
 We use the following Mapbox Static Tiles API from mapplot to renders the base maps:<br>
-[Street map]("https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0")<br>
-[Satellite map]("https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0")<br>
-[Dark map]("https://api.mapbox.com/styles/v1/mapbox/dark-v10.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0")<br>
+[Street map](https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)<br>
+[Satellite map](https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)<br>
+[Dark map](https://api.mapbox.com/styles/v1/mapbox/dark-v10.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A#2/0.0/0.0)<br>
 
 We use the Leaflet tileLayer API to set up our base maps<br>
-```
-let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', { ...
-});
-let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {...
-});
-let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', { ...
-});
-```
+`let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', { ... });`
+`let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {...});`
+`let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', { ...});`
 <br>
-We create a map object in by referring to division specified in index.html `<div id="mapid"></div>`<br>
+We create a map object in by referring to division specified in "index.html" <br>
 and set the default layer to `streets` tile<br>
 `let map = L.map('mapid', {center: [40.7, -94.5], zoom: 3, layers: [streets]});`<br>
 We then create the layer object for the base maps. The base maps can be displayed only one at a time.<br>
